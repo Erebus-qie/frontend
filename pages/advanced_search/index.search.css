@@ -1,0 +1,48 @@
+/* 返回普通 */
+    <div className="flex w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 2xl:w-4/12 justify-between mt-6  leading-10" >
+
+      /* 左侧介绍 */
+      <div className="flex flex-none item-center w-32 "><text>{content}</text></div>
+
+      /* 右侧方框、日期、按钮等 */
+      <div className="flex flex-auto w-full">
+
+        /* 普通文本 */
+        {type === "text" && <input type="text" content={content} id={innerId} className="border rounded-md w-full px-2 " />}
+
+        /* 日期 */
+        {type === "date" &&
+          <div className="flex flex-auto flex-col sm:flex-row w-full justify-between">
+            <div> <input type="date" id={`${innerId}-1`} className="px-2 rounded-md border min-w-full 2xl:w-64" /></div>
+            <div><text className="px-3">至</text></div>
+            <div> <input type="date" id={`${innerId}-2`} className="px-2 rounded-md border flex-auto  min-w-full 2xl:w-64" /></div>
+          </div>
+        }
+
+        /* 按键 */
+        {type === "radio" &&
+          <div className="flex flex-wrap">
+            <div className="mr-12"> <input type="radio" id={`${innerId}-1`} name="radios" /> 是</div>
+            <div className="mr-12"> <input type="radio" id={`${innerId}-2`} name="radios" /> 否</div>
+            <div className="mr-12"> <input type="radio" id={`${innerId}-3`} name="radios" defaultChecked /> 无要求</div>
+          </div>
+        }
+      </div>
+    </div>
+	
+	
+	
+	/* 下面 */
+	    <div>
+	      <div><a href="../" className="float-right mr-8 lg:mr-24 mt-8 text-lg xl:text-xl">主页</a></div>
+	      <form onSubmit={handleSubmit} className="w-screen flex flex-col items-center text-lg">
+	        <input type="text" content="普通搜索" innerId="general-search" />
+	        <input type="text" content="必备关键词" innerId="include-content" />
+	        <input type="text" content="排除关键词" innerId="exclude-content" />
+	        <input type="date" content="发布时间" innerId="publishing-date" />
+	        <input type="date" content="爬取时间" innerId="scrapy-date" />
+	        <input type="text" content="信息来源" innerId="info-source" />
+	        <input type="radio" content="是否含附件" innerId="contain-attachment" />
+	        <input type="submit" value="搜索" className="mt-12 w-24 h-12 mb-12" />
+	      </form>
+	    </div>
